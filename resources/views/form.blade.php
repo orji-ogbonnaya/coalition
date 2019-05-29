@@ -25,7 +25,7 @@ Complete the following form
         </div>
 
 
-        <button class="btn btn-primary" id="submit" name="submit" onclick="showValues()">Submit</button>
+        <button class="btn btn-primary" id="submit" name="submit">Submit</button>
     </form>
     <div id="hidden_table">
 
@@ -61,28 +61,40 @@ Complete the following form
 $(document).ready(function() {
     console.log("Ready!!");
 
-    // $("#submit").click(function(){
-    //     $name = $("#name").val();
-    //     alert($name);
-    // });
-
-    $("#form").submit(function(){
-        // alert("Submitted");
+    $("#submit").click(function(){
         $name = $("#name").val();
         $qty = $("#qty").val();
         $price = $("#price").val();
         $date = '01/01/01';
 
-
-        // alert($name);
+        var table = document.getElementById('main_table').style.display='block';
 
         var markup = "<tr id='dataRow'><td id='name'>" + $name + "</td><td id='qty'>" + $qty + "</td><td>" + $price + "</td><td>" + $date + "</td><td class='price'>" +$qty*$price + "</td></tr>";
 
-        var table = document.getElementById('main_table');
+        var table = document.getElementById('main_table').display=true;;
 
         $('#main_table tr:last').after(markup);
-        
+       
     });
+
+    // $("#form").submit(function(e){
+    //     // alert("Submitted");
+    //     e.preventDefault();
+    //     $name = $("#name").val();
+    //     $qty = $("#qty").val();
+    //     $price = $("#price").val();
+    //     $date = '01/01/01';
+
+
+    //     // alert($name);
+
+    //     var markup = "<tr id='dataRow'><td id='name'>" + $name + "</td><td id='qty'>" + $qty + "</td><td>" + $price + "</td><td>" + $date + "</td><td class='price'>" +$qty*$price + "</td></tr>";
+
+    //     var table = document.getElementById('main_table').display=true;;
+
+    //     $('#main_table tr:last').after(markup);
+
+    // });
 
     
 });
