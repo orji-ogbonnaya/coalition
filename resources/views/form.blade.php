@@ -30,7 +30,7 @@ Complete the following form
     <div id="hidden_table">
 
     </div>
-    <div class="col-xs-12 table-space-top summary_table" id="summary_table" style="display:none">
+    <div class="col-xs-12 table-space-top summary_table" id="summary_table">
         <div class="admin-table table-responsive">
 
           <table class="table" id="main_table">
@@ -44,7 +44,7 @@ Complete the following form
             </tr>
             </thead>
             <tbody>
-            <tr style="display:none">
+            <tr>
 
             </tr>
 
@@ -61,16 +61,20 @@ Complete the following form
 $(document).ready(function() {
     console.log("Ready!!");
 
-    $("#submit").click(function(){
+    $("#submit").click(function(e){
+        e.preventDefault();
         $name = $("#name").val();
         $qty = $("#qty").val();
         $price = $("#price").val();
         $date = '01/01/01';
-
+        console.log('here');
         var table = document.getElementById('main_table').style.display='block';
 
+        console.log('before append...check');
         var markup = "<tr id='dataRow'><td id='name'>" + $name + "</td><td id='qty'>" + $qty + "</td><td>" + $price + "</td><td>" + $date + "</td><td class='price'>" +$qty*$price + "</td></tr>";
 
+        $('table tbody').append(markup);
+        console.log('after append...check');
         var table = document.getElementById('main_table').display=true;;
 
         $('#main_table tr:last').after(markup);
